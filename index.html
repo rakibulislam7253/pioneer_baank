@@ -38,7 +38,7 @@
             <div class="col-md-3 withdraw">
                 <div class="wirhdraw status">
                     <h4>Withdraw</h4>
-                    <h2>$00</h2>
+                    <h2>$<span id="currentWithdraw">00</span></h2>
                 </div>
 
             </div>
@@ -66,9 +66,10 @@
                 <div class="col-md-6 r2">
                     <div class="submit-area">
                         <h2>Withdraw</h2>
-                        <input type="text" class="form-control" placeholder="$-amount you want to withdraw">
+                        <input id="with_text" type="text" class="form-control"
+                            placeholder="$-amount you want to withdraw">
                         <br>
-                        <button class="btn btn-success">Withdraw</button>
+                        <button id="with1" class="btn btn-success">Withdraw</button>
                     </div>
 
                 </div>
@@ -86,19 +87,36 @@
 
         // deposit 
         const deposit1 = document.getElementById('dep1').addEventListener("click", function () {
-             var deposit2=document.getElementById("dep_text").value
-             var convertDeposit2= parseFloat(deposit2);
-            var currentDeposit=document.getElementById("currentDeposit").innerText
-            var convertCurrentDeposit=parseFloat(currentDeposit);
-            var total=convertDeposit2 + convertCurrentDeposit;
-            document.getElementById("currentDeposit").innerText=total;
-            document.getElementById("dep_text").value="";
+            var deposit2 = document.getElementById("dep_text").value
+            var convertDeposit2 = parseFloat(deposit2);
+            var currentDeposit = document.getElementById("currentDeposit").innerText
+            var convertCurrentDeposit = parseFloat(currentDeposit);
+            var total = convertDeposit2 + convertCurrentDeposit;
+            document.getElementById("currentDeposit").innerText = total;
+            document.getElementById("dep_text").value = "";
 
             //balance
-            var currentBalance=document.getElementById("currentBalance").innerText
-            var convertCurrentBalance=parseFloat(currentBalance);
-            var total1=convertDeposit2 + convertCurrentBalance;
-            document.getElementById("currentBalance").innerText=total1;
+            var currentBalance = document.getElementById("currentBalance").innerText
+            var convertCurrentBalance = parseFloat(currentBalance);
+            var total1 = convertDeposit2 + convertCurrentBalance;
+            document.getElementById("currentBalance").innerText = total1;
+        })
+        //withdraw
+        const withdraw = document.getElementById('with1').addEventListener('click', function () {
+            var withdraw2 = document.getElementById('with_text').value
+            var convertWithdraw = parseFloat(withdraw2);
+
+            var currentWithdraw = document.getElementById("currentWithdraw").innerText;
+            var currentWithdrawConvert = parseFloat(currentWithdraw);
+            var total_with_add = convertWithdraw + currentWithdrawConvert
+            document.getElementById("currentWithdraw").innerText = total_with_add;
+            document.getElementById("with_text").value = "";
+
+
+            var currentBalance = document.getElementById("currentBalance").innerText
+            var convertCurrentBalance = parseFloat(currentBalance);
+            var total_with_sub  =  convertCurrentBalance - convertWithdraw ;
+            document.getElementById("currentBalance").innerText =  total_with_sub;
         })
     </script>
 </body>
